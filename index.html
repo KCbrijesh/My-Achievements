@@ -2,43 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two Section Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 20px;
-    }
-    h1 {
-      color: darkblue;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-  </style>
+  <title>Security Terminal Theme</title>
+  <link rel="stylesheet" href="page_style.css">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
 </head>
 <body>
+    <header>
+        <h1>My Achievements</h1>
+    </header>
 
-  <!-- Section 1 -->
-  <div class="section">
-    <h1>Certifications</h1>
-    <p><ul>
-        <li><a href="./CEH_Master">CEHv13 Master</a></li>
-        <li><a href="./CEH_Theory">CEHv13 Theory</a></li>
-        <li><a href="./CEH_Practical">CEHv13 Practical</a></li>
-        <li><a href="./eJPT">eJPT</a></li>
-    </ul></p>
-  </div>
+    <main>
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li><a href="CEH_Certs.html">Certified Ethical Hacker v13</a></li>
+                <li><a href="eJPT.html">Junior Penetration Tester</a></li>
+            </ul>
+        </section>
 
-  <!-- Section 2 -->
-  <div class="section">
-    <h1>Awards</h1>
-    <p><ul>
-        <li><a href="./ITCI_GD">ITCI Growth Driver</a></li>
-        <li><a href="./ITCI_CoE">ITCI Circle of Excellence</a></li>
-    </ul></p>
-  </div>
-
+        <section>
+            <h2>Recognitions</h2>
+            <ul>
+                <li><a href="./ITCI_GD.html">ITCI Growth Driver</a></li>
+                <li><a href="./ITCI_CoE.html">ITCI Circle of Excellence</a></li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
+
+<!-- 
+    Secure coding best practices such as:
+        No inline scripts/styles (helps with CSP enforcement)
+        CSP Meta tag (default-src 'self') to prevent external content execution
+        No external scripts loaded (reduces attack surface)
+        Proper meta tags for security hardening
+ -->

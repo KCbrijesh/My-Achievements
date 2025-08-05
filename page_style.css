@@ -1,0 +1,125 @@
+:root {
+    --term-bg: #0a0f0a;
+    --term-text: #33ff00;
+  }
+  
+  body {
+    background: var(--term-bg);
+    color: var(--term-text);
+    font-family: 'Inconsolata', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* --- Soft CRT glow --- */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 0, 0.08) 0%, transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+    animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.08; }
+    50% { opacity: 0.12; }
+  }
+  
+  /* --- Stronger scanlines --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 0, 0.1),
+      rgba(0, 255, 0, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+    animation: scan 10s linear infinite;
+  }
+  @keyframes scan {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(50%); }
+  }
+  
+  /* Headings */
+  h1, h2 {
+    color: var(--term-text);
+    text-shadow: 0 0 10px rgba(51, 255, 0, 0.6);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Links */
+  a {
+    color: var(--term-text);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(51, 255, 0, 0.5);
+    transition: all 0.3s;
+    position: relative;
+    z-index: 10;
+  }
+  a:hover {
+    color: #aaffaa;
+    text-shadow: 0 0 4px #aaffaa;
+  }
+  
+  /* Layout */
+  header, footer, main {
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* List */
+  ul {
+    list-style: none;
+    padding-left: 1.2rem;
+  }
+  ul li::before {
+    content: '▹ ';
+    color: var(--term-text);
+    margin-right: 0.5rem;
+  }
+  
+  /* Footer */
+  footer p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-style: italic;
+  }
+  
+  /* Typewriter animation */
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(51, 255, 0, 0.75);
+    width: 0;
+    animation: typing 3.5s steps(60, end) forwards, blink-caret 0.75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink-caret {
+    0%, 100% { border-color: transparent }
+    50% { border-color: rgba(51, 255, 0, 0.75); }
+  }
+  
